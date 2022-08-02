@@ -5,7 +5,7 @@ import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import MonetizationOnOutlinedIcon from '@mui/icons-material/MonetizationOnOutlined';
 import './widget.scss';
 
-const Widget = () => {
+const Widget = ({ type }) => {
     return (
         <div className="widget">
             <div className="left">
