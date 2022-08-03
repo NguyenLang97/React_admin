@@ -2,10 +2,27 @@ import './datatable.scss';
 import { DataGrid } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../../datatablesource';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const Datatable = () => {
-    const [data, setData] = useState(userRows);
+    const [data, setData] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let list = [];
+            try {
+                const querySnapshot = await getDocs(collection(db, 'users'));
+                querySnapshot.forEach((doc) => {
+                    list.push({ id: doc.id, ...doc.data() });
+                });
+                setData(list);
+                console.log(list);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+        fetchData();
+    }, []);
 
     const handleDelete = (id) => {
         setData(data.filter((item) => item.id !== id));
@@ -43,7 +60,7 @@ const Datatable = () => {
                 rows={data}
                 columns={userColumns.concat(actionColumn)}
                 pageSize={9}
-                rowsPerPageOptions={[1]}
+                rowsPerPageOptions={[9]}
                 checkboxSelection
             />
         </div>

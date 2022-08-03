@@ -21,22 +21,24 @@ const Single = () => {
                                 className="itemImg"
                             />
                             <div className="details">
-                                <h1 className="itemTitle">Nguyễn Mai Hương</h1>
+                                <h1 className="itemTitle">Jane Doe</h1>
                                 <div className="detailItem">
                                     <span className="itemKey">Email:</span>
-                                    <span className="itemValue">maihuong2k1@gmail.com</span>
+                                    <span className="itemValue">janedoe@gmail.com</span>
                                 </div>
                                 <div className="detailItem">
                                     <span className="itemKey">Phone:</span>
-                                    <span className="itemValue">0986856852</span>
+                                    <span className="itemValue">+1 2345 67 89</span>
                                 </div>
                                 <div className="detailItem">
                                     <span className="itemKey">Address:</span>
-                                    <span className="itemValue">Huề Đông Gia Bình Bắc Ninh</span>
+                                    <span className="itemValue">
+                                        Elton St. 234 Garden Yd. NewYork
+                                    </span>
                                 </div>
                                 <div className="detailItem">
                                     <span className="itemKey">Country:</span>
-                                    <span className="itemValue">Việt Nam</span>
+                                    <span className="itemValue">USA</span>
                                 </div>
                             </div>
                         </div>
