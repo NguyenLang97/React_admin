@@ -1,4 +1,4 @@
-import './new.scss';
+import './newusers.scss';
 import Sidebar from '../../components/sidebar/Sidebar';
 import Navbar from '../../components/navbar/Navbar';
 import DriveFolderUploadOutlinedIcon from '@mui/icons-material/DriveFolderUploadOutlined';
@@ -8,8 +8,9 @@ import { auth, db, storage } from '../../firebase';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
 import { useNavigate } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 
-const New = ({ inputs, title }) => {
+const NewUsers = ({ inputs, title }) => {
     const [file, setFile] = useState('');
     const [data, setData] = useState({});
     const [per, setPerc] = useState(null);
@@ -73,6 +74,12 @@ const New = ({ inputs, title }) => {
             console.log(err);
         }
     };
+    const {
+        register,
+
+        formState: { errors },
+    } = useForm();
+    const onSubmit = (data) => console.log(data);
 
     return (
         <div className="new">
@@ -94,7 +101,7 @@ const New = ({ inputs, title }) => {
                         />
                     </div>
                     <div className="right">
-                        <form onSubmit={handleAdd}>
+                        <form onSubmit={handleAdd(onSubmit)}>
                             <div className="formInput">
                                 <label htmlFor="file">
                                     Image: <DriveFolderUploadOutlinedIcon className="icon" />
@@ -113,9 +120,12 @@ const New = ({ inputs, title }) => {
                                     <input
                                         id={input.id}
                                         type={input.type}
+                                        name={input.name}
                                         placeholder={input.placeholder}
                                         onChange={handleInput}
+                                        ref={register}
                                     />
+                                    <p>{errors[input.name]?.message}</p>
                                 </div>
                             ))}
                             <button disabled={per !== null && per < 100} type="submit">
@@ -129,4 +139,4 @@ const New = ({ inputs, title }) => {
     );
 };
 
-export default New;
+export default NewUsers;
