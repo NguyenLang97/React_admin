@@ -1,6 +1,7 @@
 .sidebar {
     flex: 1;
     border-right: 0.5px solid rgb(230, 227, 227);
+    min-width: 160px;
     min-height: 100vh;
     background: white;
 
@@ -11,7 +12,7 @@
         justify-content: center;
 
         .logo {
-            font-size: 20px;
+            font-size: 26px;
             font-weight: bold;
             color: #6439ff;
         }
@@ -23,12 +24,11 @@
     }
 
     .center {
-        padding-left: 10px;
-
         ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            widows: 100%;
 
             .title {
                 font-size: 10px;
@@ -39,9 +39,11 @@
             }
 
             li {
+                widows: 100%;
                 display: flex;
                 align-items: center;
-                padding: 5px;
+                justify-content: space-between;
+                padding: 12px 8px 12px 5px;
                 cursor: pointer;
 
                 &:hover {
@@ -49,15 +51,15 @@
                 }
 
                 .icon {
-                    font-size: 18px;
+                    font-size: 22px;
                     color: #7451f8;
                 }
 
                 span {
-                    font-size: 13px;
+                    padding-left: 16px;
+                    font-size: 16px;
                     font-weight: 600;
                     color: #888;
-                    margin-left: 10px;
                 }
             }
         }

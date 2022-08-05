@@ -5,90 +5,79 @@ import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import StoreIcon from '@mui/icons-material/Store';
 import InsertChartIcon from '@mui/icons-material/InsertChart';
-import SettingsApplicationsIcon from '@mui/icons-material/SettingsApplications';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import NotificationsNoneIcon from '@mui/icons-material/NotificationsNone';
 import SettingsSystemDaydreamOutlinedIcon from '@mui/icons-material/SettingsSystemDaydreamOutlined';
 import PsychologyOutlinedIcon from '@mui/icons-material/PsychologyOutlined';
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import CategoryRoundedIcon from '@mui/icons-material/CategoryRounded';
 import { Link } from 'react-router-dom';
-import { DarkModeContext } from '../../context/darkModeContext';
-import { useContext } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { handleLight, handleDark } from '../../redux/store/action/darkModeAction';
+import { authLogout } from '../../redux/store/action/authAction';
+import HomeSharpIcon from '@mui/icons-material/HomeSharp';
 
 const Sidebar = () => {
-    const { dispatch } = useContext(DarkModeContext);
+    const dispatch = useDispatch();
+    const darkmode = useSelector((state) => state.darkModeReducer.darkMode);
+    const handleLogout = () => {
+        dispatch(authLogout(null));
+        console.log('dang xuat');
+    };
     return (
         <div className="sidebar">
             <div className="top">
                 <Link to="/" style={{ textDecoration: 'none' }}>
-                    <span className="logo">lamadmin</span>
+                    <span className="logo">ADMIN</span>
                 </Link>
             </div>
             <hr />
             <div className="center">
                 <ul>
-                    <p className="title">MAIN</p>
+                    {/* <p className="title">MENU</p> */}
                     <li>
-                        <DashboardIcon className="icon" />
                         <span>Dashboard</span>
+                        <HomeSharpIcon className="icon" />
                     </li>
-                    <p className="title">LISTS</p>
                     <Link to="/users" style={{ textDecoration: 'none' }}>
                         <li>
+                            <span>Customer</span>
                             <PersonOutlineIcon className="icon" />
-                            <span>Users</span>
                         </li>
                     </Link>
                     <Link to="/products" style={{ textDecoration: 'none' }}>
                         <li>
-                            <StoreIcon className="icon" />
                             <span>Products</span>
+                            <CategoryRoundedIcon className="icon" />
                         </li>
                     </Link>
                     <li>
-                        <CreditCardIcon className="icon" />
                         <span>Orders</span>
+                        <CreditCardIcon className="icon" />
                     </li>
                     <li>
-                        <LocalShippingIcon className="icon" />
                         <span>Delivery</span>
+                        <LocalShippingIcon className="icon" />
                     </li>
-                    <p className="title">USEFUL</p>
+
                     <li>
-                        <InsertChartIcon className="icon" />
-                        <span>Stats</span>
-                    </li>
-                    <li>
-                        <NotificationsNoneIcon className="icon" />
                         <span>Notifications</span>
+                        <NotificationsNoneIcon className="icon" />
                     </li>
-                    <p className="title">SERVICE</p>
+
                     <li>
-                        <SettingsSystemDaydreamOutlinedIcon className="icon" />
-                        <span>System Health</span>
-                    </li>
-                    <li>
-                        <PsychologyOutlinedIcon className="icon" />
-                        <span>Logs</span>
-                    </li>
-                    <li>
-                        <SettingsApplicationsIcon className="icon" />
-                        <span>Settings</span>
-                    </li>
-                    <p className="title">USER</p>
-                    <li>
-                        <AccountCircleOutlinedIcon className="icon" />
                         <span>Profile</span>
+                        <AccountCircleOutlinedIcon className="icon" />
                     </li>
                     <li>
+                        <span onClick={handleLogout}>Logout</span>
                         <ExitToAppIcon className="icon" />
-                        <span>Logout</span>
                     </li>
                 </ul>
             </div>
             <div className="bottom">
-                <div className="colorOption" onClick={() => dispatch({ type: 'LIGHT' })}></div>
-                <div className="colorOption" onClick={() => dispatch({ type: 'DARK' })}></div>
+                <div className="colorOption" onClick={() => dispatch(handleLight(false))}></div>
+                <div className="colorOption" onClick={() => dispatch(handleDark(true))}></div>
             </div>
         </div>
     );
