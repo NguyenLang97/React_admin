@@ -1,76 +1,86 @@
 export const userInputs = [
     {
         id: 'username',
+        name: 'username',
         label: 'Username',
         type: 'text',
         placeholder: 'john_doe',
     },
     {
-        id: 'displayName',
+        id: 'displayname',
+        name: 'displayname',
+
         label: 'Name and surname',
         type: 'text',
         placeholder: 'John Doe',
     },
     {
+        id: 'yearofbirth',
+        name: 'yearofbirth',
+
+        label: 'Year of Birth',
+        type: 'text',
+        placeholder: '1998',
+    },
+    {
         id: 'email',
+        name: 'email',
         label: 'Email',
         type: 'mail',
         placeholder: 'john_doe@gmail.com',
     },
     {
         id: 'phone',
+        name: 'phone',
         label: 'Phone',
         type: 'text',
         placeholder: '+1 234 567 89',
     },
     {
         id: 'password',
+        name: 'password',
         label: 'Password',
         type: 'password',
     },
     {
         id: 'address',
+        name: 'address',
         label: 'Address',
         type: 'text',
         placeholder: 'Elton St. 216 NewYork',
-    },
-    {
-        id: 'country',
-        label: 'Country',
-        type: 'text',
-        placeholder: 'USA',
     },
 ];
 
 export const productInputs = [
     {
-        id: 1,
+        id: 'title',
         label: 'Title',
         type: 'text',
         placeholder: 'Apple Macbook Pro',
     },
     {
-        id: 2,
+        id: 'description',
         label: 'Description',
         type: 'text',
         placeholder: 'Description',
     },
     {
-        id: 3,
+        
+        id: 'category',
         label: 'Category',
         type: 'text',
         placeholder: 'Computers',
     },
     {
-        id: 4,
+        id: 'price',
         label: 'Price',
         type: 'text',
         placeholder: '100',
     },
     {
-        id: 5,
-        label: 'Stock',
+        id: 'total',
+        label: 'Total',
         type: 'text',
-        placeholder: 'in stock',
+        placeholder: '180',
     },
 ];

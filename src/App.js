@@ -1,8 +1,11 @@
 import Home from './pages/home/Home';
 import Login from './pages/login/Login';
-import List from './pages/list/List';
+import Listuser from './pages/list_users/ListUsers';
+import Listproduct from './pages/list_products/ListProducts';
 import Single from './pages/single/Single';
-import New from './pages/new/New';
+import NewUsers from './pages/new_users/NewUsers';
+import NewProducts from './pages/new_products/NewProducts';
+
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { productInputs, userInputs } from './formSource';
 import './style/dark.scss';
@@ -36,7 +39,7 @@ function App() {
                                 index
                                 element={
                                     <RequireAuth>
-                                        <List />
+                                        <Listuser />
                                     </RequireAuth>
                                 }
                             />
@@ -52,7 +55,7 @@ function App() {
                                 path="new"
                                 element={
                                     <RequireAuth>
-                                        <New inputs={userInputs} title="Add New User" />
+                                        <NewUsers inputs={userInputs} title="Add New User" />
                                     </RequireAuth>
                                 }
                             />
@@ -62,7 +65,7 @@ function App() {
                                 index
                                 element={
                                     <RequireAuth>
-                                        <List />
+                                        <Listproduct />
                                     </RequireAuth>
                                 }
                             />
@@ -78,7 +81,10 @@ function App() {
                                 path="new"
                                 element={
                                     <RequireAuth>
-                                        <New inputs={productInputs} title="Add New Product" />
+                                        <NewProducts
+                                            inputs={productInputs}
+                                            title="Add New Product"
+                                        />
                                     </RequireAuth>
                                 }
                             />

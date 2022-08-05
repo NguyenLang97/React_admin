@@ -1,4 +1,4 @@
-import './datatable.scss';
+import './datatableusers.scss';
 import { DataGrid } from '@mui/x-data-grid';
 import { userColumns, userRows } from '../../datatablesource';
 import { Link } from 'react-router-dom';
@@ -76,7 +76,7 @@ const Datatable = () => {
     return (
         <div className="datatable">
             <div className="datatableTitle">
-                Add New User
+                Customer
                 <Link to="/users/new" className="link">
                     Add New
                 </Link>
@@ -85,8 +85,8 @@ const Datatable = () => {
                 className="datagrid"
                 rows={data}
                 columns={userColumns.concat(actionColumn)}
-                pageSize={9}
-                rowsPerPageOptions={[9]}
+                pageSize={5}
+                rowsPerPageOptions={[5]}
                 checkboxSelection
             />
         </div>

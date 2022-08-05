@@ -35,10 +35,12 @@ const Sidebar = () => {
             <div className="center">
                 <ul>
                     {/* <p className="title">MENU</p> */}
-                    <li>
-                        <span>Dashboard</span>
-                        <HomeSharpIcon className="icon" />
-                    </li>
+                    <Link to="/" style={{ textDecoration: 'none' }}>
+                        <li>
+                            <span>Dashboard</span>
+                            <HomeSharpIcon className="icon" />
+                        </li>
+                    </Link>
                     <Link to="/users" style={{ textDecoration: 'none' }}>
                         <li>
                             <span>Customer</span>
@@ -69,8 +71,8 @@ const Sidebar = () => {
                         <span>Profile</span>
                         <AccountCircleOutlinedIcon className="icon" />
                     </li>
-                    <li>
-                        <span onClick={handleLogout}>Logout</span>
+                    <li onClick={handleLogout}>
+                        <span >Logout</span>
                         <ExitToAppIcon className="icon" />
                     </li>
                 </ul>
