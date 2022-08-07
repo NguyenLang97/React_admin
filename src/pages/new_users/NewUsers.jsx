@@ -16,6 +16,7 @@ const NewUsers = () => {
     const [per, setPerc] = useState(null);
     const [error, setError] = useState(false);
     const navigate = useNavigate();
+    console.log(file);
 
     useEffect(() => {
         const uploadFile = () => {
@@ -55,8 +56,8 @@ const NewUsers = () => {
     }, [file]);
 
     const handleAdd = async (data) => {
-        let dataNew = {...data, ...img}
-
+        let dataNew = { ...data, ...img };
+        console.log(dataNew);
         try {
             const res = await createUserWithEmailAndPassword(auth, dataNew.email, dataNew.password);
             await setDoc(doc(db, 'users', res.user.uid), {

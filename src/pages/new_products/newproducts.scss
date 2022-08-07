@@ -4,7 +4,6 @@
 
     .newContainer {
         flex: 6;
-
         .top,
         .bottom {
             -webkit-box-shadow: 2px 4px 10px 1px rgba(0, 0, 0, 0.47);
@@ -32,35 +31,63 @@
 
             .right {
                 flex: 2;
+                .imageMessage {
+                    font-size: 14px;
+                    font-style: italic;
+                }
 
                 form {
                     display: flex;
                     flex-wrap: wrap;
+                    justify-content: center;
+                    flex-direction: column;
                     gap: 30px;
-                    justify-content: space-around;
 
-                    .formInput {
-                        width: 40%;
+                    .formInput-wrap {
+                        display: flex;
+                        flex-wrap: wrap;
+                        flex-direction: row;
+                        justify-content: space-around;
 
-                        label {
+                        .formInput {
+                            width: 46%;
                             display: flex;
-                            align-items: center;
-                            gap: 10px;
+                            flex-wrap: nowrap;
+                            flex-direction: column;
+                            margin-bottom: 20px;
 
-                            .icon {
-                                cursor: pointer;
+                            label {
+                                display: flex;
+                                align-items: center;
+                                gap: 10px;
+
+                                .icon {
+                                    cursor: pointer;
+                                }
+                            }
+
+                            input {
+                                width: 100%;
+                                padding: 5px;
+                                border: none;
+                                border-bottom: 1px solid gray;
+                            }
+
+                            .messages {
+                                margin-top: 10px;
+                                font-size: 16px;
+                                color: red;
                             }
                         }
-
-                        input {
-                            width: 100%;
-                            padding: 5px;
-                            border: none;
-                            border-bottom: 1px solid gray;
-                        }
+                    }
+                    .messageSubmit {
+                        color: red;
+                        margin: auto;
                     }
 
                     button {
+                        margin: auto;
+
                         width: 150px;
                         padding: 10px;
                         border: none;

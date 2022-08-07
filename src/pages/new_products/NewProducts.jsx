@@ -17,6 +17,7 @@ const NewProducts = () => {
     const [error, setError] = useState(false);
     const navigate = useNavigate();
 
+
     useEffect(() => {
         const uploadFile = () => {
             const name = new Date().getTime() + file.name;
@@ -57,6 +58,9 @@ const NewProducts = () => {
 
     const handleAdd = async (data) => {
         let dataNew = { ...data, ...img };
+        console.log(dataNew);
+        console.log(img);
+
         try {
             await addDoc(collection(db, 'products'), {
                 ...dataNew,
@@ -65,13 +69,14 @@ const NewProducts = () => {
             navigate(-1);
         } catch (err) {
             console.log(err);
+            setError(true);
         }
     };
     const {
         register,
         handleSubmit,
         formState: { errors },
-    } = useForm({});
+    } = useForm();
 
     return (
         <div className="new">
@@ -102,127 +107,103 @@ const NewProducts = () => {
                                     <input
                                         id="file"
                                         type="file"
-                                        onChange={(e) => setFile(e.target.files[0])}
                                         style={{ display: 'none' }}
+                                        onChange={e => setFile(e.target.files[0])}
+                                        // {...register('file', {
+                                        //     required: 'Vui lòng chọn ảnh sản phẩm',
+                                        // })}
                                     />
-                                    <p className="imageMessage">--Chọn ảnh nếu có--</p>
+                                    {/* {errors.file && (
+                                        <p className="messages">{errors.file.message}</p>
+                                    )} */}
                                 </div>
                                 <div className="formInput">
-                                    <label>Username</label>
+                                    <label>Product's name</label>
                                     <input
-                                        id="username"
+                                        id="title"
                                         type="text"
-                                        placeholder="vanlang"
-                                        {...register('username', {
-                                            required: 'Vui lòng nhập thông tin',
+                                        placeholder="Apple Macbook Pro"
+                                        {...register('title', {
+                                            required: 'Vui lòng nhập tên sản phẩm',
                                         })}
                                     />
-                                    {errors.username && (
-                                        <p className="messages">{errors.username.message}</p>
+                                    {errors.title && (
+                                        <p className="messages">{errors.title.message}</p>
                                     )}
                                 </div>
 
                                 <div className="formInput">
-                                    <label>Fullname</label>
+                                    <label>Description</label>
                                     <input
-                                        id="fullname"
+                                        id="description"
                                         type="text"
-                                        placeholder="Nguyễn Văn Lăng"
-                                        {...register('fullname', {
-                                            required: 'Vui lòng nhập thông tin',
+                                        placeholder="Description"
+                                        {...register('description', {
+                                            required: 'Vui lòng nhập thông tin chi tiết sản phâm',
                                         })}
                                     />
-                                    {errors.fullname && (
-                                        <p className="messages">{errors.fullname.message}</p>
-                                    )}
-                                </div>
-                                <div className="formInput">
-                                    <label>Email</label>
-                                    <input
-                                        id="email"
-                                        type="mail"
-                                        placeholder="nguyenvanlang1997@gmail.com"
-                                        {...register('email', {
-                                            required: 'Vui lòng nhập email',
-                                            pattern: {
-                                                value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g,
-                                                message: 'Vui lòng nhập email',
-                                            },
-                                        })}
-                                    />
-                                    {errors.email && (
-                                        <p className="messages">{errors.email.message}</p>
-                                    )}
-                                </div>
-                                <div className="formInput">
-                                    <label>Year of Birth</label>
-                                    <input
-                                        id="yearofbirth"
-                                        type="date"
-                                        placeholder="01/01"
-                                        {...register('yearofbirth', {
-                                            required: 'Vui lòng nhập ngày tháng năm sinh',
-                                        })}
-                                    />
-                                    {errors.yearofbirth && (
-                                        <p className="messages">{errors.yearofbirth.message}</p>
+                                    {errors.description && (
+                                        <p className="messages">{errors.description.message}</p>
                                     )}
                                 </div>
 
                                 <div className="formInput">
-                                    <label>Phone</label>
+                                    <label for="category">Category</label>
+                                    <select
+                                        name="category"
+                                        id="category"
+                                        {...register('category', {
+                                            required: 'Vui lòng chọn loại',
+                                        })}
+                                    >
+                                        <option value="">None</option>
+                                        <option value="PC">PC</option>
+                                        <option value="Điện thoại">Điện thoại</option>
+                                        <option value="Laptop">Laptop</option>
+                                        <option value="Chuột">Chuột</option>
+                                    </select>
+                                    {errors.category && (
+                                        <p className="messages">{errors.category.message}</p>
+                                    )}
+                                </div>
+                                <div className="formInput">
+                                    <label>Price</label>
                                     <input
-                                        id="phone"
+                                        id="price"
                                         type="text"
-                                        placeholder="0986856852"
-                                        {...register('phone', {
-                                            required: 'Vui lòng nhập số điện thoại',
+                                        placeholder="1000000VND"
+                                        {...register('price', {
+                                            required: 'Vui lòng nhập giá',
                                             pattern: {
                                                 value: /\d+/,
-                                                message: 'Vui lòng nhập số điện thoại ',
+                                                message: 'Vui lòng nhập giá',
                                             },
                                         })}
                                     />
-                                    {errors.phone && (
-                                        <p className="messages">{errors.phone.message}</p>
+                                    {errors.price && (
+                                        <p className="messages">{errors.price.message}</p>
                                     )}
                                 </div>
                                 <div className="formInput">
-                                    <label>Password</label>
+                                    <label>Total In Store</label>
                                     <input
-                                        id="password"
+                                        id="total"
                                         type="text"
-                                        placeholder="vanlang@123"
-                                        {...register('password', {
-                                            required: 'Vui lòng nhập mật khẩu',
-                                            minLength: {
-                                                value: 6,
-                                                message: 'Vui lòng nhập 6 ký tự',
+                                        placeholder="180"
+                                        {...register('total', {
+                                            required: 'Vui lòng nhập tổng số lượng',
+                                            pattern: {
+                                                value: /\d+/,
+                                                message: 'Vui lòng nhập tổng số lượng',
                                             },
                                         })}
                                     />
-                                    {errors.password && (
-                                        <p className="messages">{errors.password.message}</p>
-                                    )}
-                                </div>
-                                <div className="formInput">
-                                    <label>Address</label>
-                                    <input
-                                        id="address"
-                                        type="text"
-                                        placeholder="Cầu Giấy, Hà Nội"
-                                        {...register('address', {
-                                            required: 'Vui lòng nhập địa chỉ',
-                                        })}
-                                    />
-                                    {errors.address && (
-                                        <p className="messages">{errors.address.message}</p>
+                                    {errors.total && (
+                                        <p className="messages">{errors.total.message}</p>
                                     )}
                                 </div>
                             </div>
-                            {error && (
-                                <p className="messageSubmit">Đã có tài khoản trên hệ thống</p>
-                            )}
+                            {error && <p className="messageSubmit">Đã có sản phẩm trên hệ thống</p>}
                             <button disabled={per !== null && per < 100} type="submit">
                                 Send
                             </button>

@@ -7,7 +7,6 @@ import NewUsers from './pages/new_users/NewUsers';
 import NewProducts from './pages/new_products/NewProducts';
 
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { productInputs, userInputs } from './formSource';
 import './style/dark.scss';
 import { useSelector } from 'react-redux';
 
@@ -81,10 +80,7 @@ function App() {
                                 path="new"
                                 element={
                                     <RequireAuth>
-                                        <NewProducts
-                                            inputs={productInputs}
-                                            title="Add New Product"
-                                        />
+                                        <NewProducts />
                                     </RequireAuth>
                                 }
                             />
