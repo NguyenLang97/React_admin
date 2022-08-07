@@ -16,8 +16,7 @@ function App() {
     const currentUser = useSelector((state) => state.authReducer.currentUser);
 
     const RequireAuth = ({ children }) => {
-        return currentUser ? children : <Navigate to="/login" />;
-    };
+        return currentUser ? children : <Navigate to="/login" />};
 
     return (
         <div className={darkmode ? 'app dark' : 'app'}>
